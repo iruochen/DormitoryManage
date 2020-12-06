@@ -35,4 +35,14 @@ public class Dormitory_ServiceImp implements Dormitory_Service {
     public List<User> userList() {
         return userDao.userList();
     }
+
+    @Override
+    public boolean isExistByBedNumber(int bedNumber) {
+        return userDao.isExistByBedNumber(bedNumber);
+    }
+
+    @Override
+    public boolean isExistByUserId(String userId) {
+        return userDao.isExistByUserId(userId);
+    }
 }

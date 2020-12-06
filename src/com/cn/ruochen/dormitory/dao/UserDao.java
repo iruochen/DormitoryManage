@@ -93,7 +93,7 @@ public class UserDao {
      * @param id id值
      * @return User用户
      */
-    public User getUser(int id) {
+    public User getUserById(int id) {
         User user = null;
         conn = JDBC_Utilts.getConnection();
         String sql = "select * from user where id = ?";
@@ -130,6 +130,47 @@ public class UserDao {
         return user;
     }
 
+    /**
+     * 根据UserId 判断用户是否已经存在
+     * @param userId 学号
+     * @return 已存在：true  不存在：false
+     */
+    public boolean isExistByUserId(String userId) {
+        conn = JDBC_Utilts.getConnection();
+        String sql = "select * from user where user_id = " + userId;
+        ResultSet resultSet;
+        try {
+            state = conn.createStatement();
+            resultSet = state.executeQuery(sql);
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (SQLException throwables) {
+            return false;
+        }
+        return false;
+    }
+
+    /**
+     * 根据BedNumber 判断用户是否已经存在
+     * @param bedNumber 床号
+     * @return 已存在：true  不存在：false
+     */
+    public boolean isExistByBedNumber(int bedNumber) {
+        conn = JDBC_Utilts.getConnection();
+        String sql = "select * from user where bed_number = " + bedNumber;
+        ResultSet resultSet;
+        try {
+            state = conn.createStatement();
+            resultSet = state.executeQuery(sql);
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (SQLException throwables) {
+            return false;
+        }
+        return false;
+    }
 
     /**
      * 更新数据
@@ -183,4 +224,5 @@ public class UserDao {
         }
         return false;
     }
+
 }

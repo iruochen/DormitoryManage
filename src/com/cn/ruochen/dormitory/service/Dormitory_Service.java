@@ -13,4 +13,8 @@ public interface Dormitory_Service {
     boolean addUser(User user);
 
     List<User> userList();
+
+    boolean isExistByBedNumber(int bedNumber);
+
+    boolean isExistByUserId(String userId);
 }

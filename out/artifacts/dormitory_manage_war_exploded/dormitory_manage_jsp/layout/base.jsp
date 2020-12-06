@@ -59,7 +59,7 @@
                                    aria-haspopup="true"
                                    aria-expanded="false">${admin.admin_name}<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="<%=path%>/dormitory_manage_jsp/layout/manage.jsp">管理中心</a></li>
+                                    <li><a href="<%=path%>/Manage?method=userList">管理中心</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="<%=path%>/Login?method=escSession">退 出</a></li>
                                 </ul>
