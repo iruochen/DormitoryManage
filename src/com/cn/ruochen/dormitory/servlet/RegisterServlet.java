@@ -68,29 +68,4 @@ public class RegisterServlet extends HttpServlet {
         out.print(json);
         out.close();
     }
-
-
-//    private void register() throws IOException, ServletException {
-//        String admin_name = request.getParameter("admin_name");
-//        String admin_pwd = request.getParameter("admin_pwd");
-//        String confirm_pwd = request.getParameter("confirm_pwd");
-//        Admin admin = new Admin();
-//        admin.setAdmin_name(admin_name);
-//        admin.setAdmin_pwd(admin_pwd);
-//        // 判断确认密码与密码是否一致
-//        if (!admin_pwd.equals(confirm_pwd)) {
-//            request.setAttribute("admin", admin);
-//            request.setAttribute("confirmPwd", confirm_pwd);
-//            request.setAttribute("confirmError", "两次密码输入不一致");
-//            request.getRequestDispatcher("dormitory_manage_jsp/register.jsp").forward(request, response);
-//            return ;
-//        }
-//        if (service.register(admin)) {
-//            // 注册成功
-//            response.sendRedirect(request.getContextPath() + "/dormitory_manage_jsp/login.jsp");
-//        } else {
-//            request.setAttribute("errorMsg", "注册失败：用户名已存在");
-//            request.getRequestDispatcher("dormitory_manage_jsp/register.jsp").forward(request, response);
-//        }
-//    }
 }

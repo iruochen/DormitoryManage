@@ -36,8 +36,23 @@ public class UserServlet extends HttpServlet {
             this.userList();
         }
         if (method.equals("update")) {
-           this.update();
+            this.update();
         }
+        if (method.equals("delete")) {
+            this.delete();
+        }
+    }
+
+    private void delete() throws IOException {
+        PrintWriter out = response.getWriter();
+        JSONObject json = new JSONObject();
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        if (service.deleteUser(id)) {
+            json.put("status", true);
+        }
+        out.print(json);
+        out.close();
     }
 
     private void update() throws IOException {
@@ -80,7 +95,7 @@ public class UserServlet extends HttpServlet {
         user.setAddress(address);
         if (user_id == null || user_id.length() <= 0) {
             error.put("userIdError", "学生学号不能为空");
-        } else if (!user_id.equals(old_user_id) &&  service.isExistByUserId(user_id)) {
+        } else if (!user_id.equals(old_user_id) && service.isExistByUserId(user_id)) {
             error.put("userIdError", "学号已存在");
         }
         if (user_name == null || user_name.length() <= 0) {

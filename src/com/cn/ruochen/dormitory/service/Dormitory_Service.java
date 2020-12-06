@@ -21,4 +21,6 @@ public interface Dormitory_Service {
     User getUserById(int id);
 
     boolean updateUser(User user);
+
+    boolean deleteUser(int id);
 }

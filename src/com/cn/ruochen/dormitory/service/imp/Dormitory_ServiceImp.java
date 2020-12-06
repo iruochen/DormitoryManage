@@ -23,7 +23,7 @@ public class Dormitory_ServiceImp implements Dormitory_Service {
 
     @Override
     public Admin login(Admin admin) {
-       return adminDao.login(admin);
+        return adminDao.login(admin);
     }
 
     @Override
@@ -54,5 +54,10 @@ public class Dormitory_ServiceImp implements Dormitory_Service {
     @Override
     public boolean updateUser(User user) {
         return userDao.updateUser(user);
+    }
+
+    @Override
+    public boolean deleteUser(int id) {
+        return userDao.deleteUser(id);
     }
 }

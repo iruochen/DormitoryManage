@@ -16,7 +16,7 @@
             margin-top: 30px;
         }
 
-        .add .title {
+        .update .title {
             font-size: 25px;
             font-weight: bold;
             text-align: center;

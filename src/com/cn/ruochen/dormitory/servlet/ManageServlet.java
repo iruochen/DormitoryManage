@@ -21,7 +21,7 @@ public class ManageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.request = request;
         this.response = response;
-        
+
         String method = request.getParameter("method");
         if (method.equals("add")) {
             this.add();
