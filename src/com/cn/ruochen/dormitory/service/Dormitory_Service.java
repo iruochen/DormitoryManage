@@ -17,4 +17,8 @@ public interface Dormitory_Service {
     boolean isExistByBedNumber(int bedNumber);
 
     boolean isExistByUserId(String userId);
+
+    User getUserById(int id);
+
+    boolean updateUser(User user);
 }

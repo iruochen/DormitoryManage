@@ -56,8 +56,8 @@
                     <ul class="nav navbar-nav">
                         <li><a href="<%=path%>/Manage?method=userList">查询</a></li>
                         <li><a href="<%=path%>/Manage?method=add">添加</a></li>
-                        <li><a href="<%=path%>/Manage?method=update">修改</a></li>
-                        <li><a href="<%=path%>/Manage?method=delete">删除</a></li>
+<%--                        <li><a href="<%=path%>/Manage?method=update">修改</a></li>--%>
+<%--                        <li><a href="<%=path%>/Manage?method=delete">删除</a></li>--%>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">

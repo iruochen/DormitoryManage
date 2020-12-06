@@ -29,39 +29,40 @@
             font-size: 13px;
         }
     </style>
-    <repid:override name="js">
-        <script>
-            // 页面框架加载完后自动执行
-            $(function () {
-                bindClickSubmit();
-            });
+</repid:override>
 
-            function bindClickSubmit() {
-                $('#btnSubmit').click(function () {
-                    $('.error-msg').empty();
+<repid:override name="js">
+    <script>
+        // 页面框架加载完后自动执行
+        $(function () {
+            bindClickSubmit();
+        });
 
-                    $.ajax({
-                        url: "${pageContext.request.contextPath}/UserServlet?method=addUser",
-                        type: "get",
-                        data: $('#addForm').serialize(),
-                        dataType: "JSON",
-                        success: function (result) {
-                            var res = eval(result);
-                            if (res.status) {
-                                window.location = "${pageContext.request.contextPath}/Manage?method=userList";
-                            } else {
-                                $.each(res.error, function (k, v) {
-                                    $('#' + k).text(v);
-                                });
-                            }
-                        }, error: function () {
-                            location.href = "${pageContext.request.contextPath}/dormitory_manage_jsp/add.jsp";
+        function bindClickSubmit() {
+            $('#btnSubmit').click(function () {
+                $('.error-msg').empty();
+
+                $.ajax({
+                    url: "${pageContext.request.contextPath}/UserServlet?method=addUser",
+                    type: "get",
+                    data: $('#addForm').serialize(),
+                    dataType: "JSON",
+                    success: function (result) {
+                        var res = eval(result);
+                        if (res.status) {
+                            window.location = "${pageContext.request.contextPath}/Manage?method=userList";
+                        } else {
+                            $.each(res.error, function (k, v) {
+                                $('#' + k).text(v);
+                            });
                         }
-                    })
-                });
-            }
-        </script>
-    </repid:override>
+                    }, error: function () {
+                        location.href = "${pageContext.request.contextPath}/dormitory_manage_jsp/add.jsp";
+                    }
+                })
+            });
+        }
+    </script>
 </repid:override>
 
 <repid:override name="content">
@@ -71,21 +72,21 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">床号</label>
             <div class="col-sm-8">
-                <input type="number" class="form-control" name="bed_number" placeholder="请输入床号" required>
+                <input type="number" class="form-control" name="bed_number" placeholder="请输入床号">
                 <span id="bedNumberError" class="error-msg"></span>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">学号</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="user_id" placeholder="请输入学号" required>
+                <input type="text" class="form-control" name="user_id" placeholder="请输入学号">
                 <span id="userIdError" class="error-msg"></span>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">姓名</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="user_name" placeholder="请输入姓名" required>
+                <input type="text" class="form-control" name="user_name" placeholder="请输入姓名">
                 <span id="userNameError" class="error-msg"></span>
             </div>
         </div>
@@ -102,21 +103,21 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">年龄</label>
             <div class="col-sm-8">
-                <input type="number" class="form-control" name="user_age" placeholder="请输入年龄" required>
+                <input type="number" class="form-control" name="user_age" placeholder="请输入年龄">
                 <span id="userAgeError" class="error-msg"></span>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">联系方式</label>
             <div class="col-sm-8">
-                <input type="number" class="form-control" name="telephone" placeholder="请输入联系方式" required>
+                <input type="number" class="form-control" name="telephone" placeholder="请输入联系方式">
                 <span id="phoneError" class="error-msg"></span>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">地址</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="address" placeholder="请输入地址" required>
+                <input type="text" class="form-control" name="address" placeholder="请输入地址">
                 <span id="addressError" class="error-msg"></span>
             </div>
         </div>

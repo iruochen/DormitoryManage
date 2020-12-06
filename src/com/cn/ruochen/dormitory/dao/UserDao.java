@@ -189,6 +189,7 @@ public class UserDao {
             prepState.setInt(5, user.getUser_age());
             prepState.setString(6, user.getTelephone());
             prepState.setString(7, user.getAddress());
+            prepState.setInt(8, user.getId());
             int i = prepState.executeUpdate();
             if (i > 0) {
                 return true;

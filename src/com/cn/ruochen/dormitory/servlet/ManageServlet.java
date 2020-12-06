@@ -29,6 +29,16 @@ public class ManageServlet extends HttpServlet {
         if (method.equals("userList")) {
             this.userList();
         }
+        if (method.equals("update")) {
+            this.update();
+        }
+    }
+
+    private void update() throws ServletException, IOException {
+        String id = request.getParameter("id");
+        User user = service.getUserById(Integer.parseInt(id));
+        request.setAttribute("user", user);
+        request.getRequestDispatcher("dormitory_manage_jsp/update.jsp").forward(request, response);
     }
 
     private void userList() throws IOException, ServletException {
