@@ -60,6 +60,7 @@ public class LoginServlet extends HttpServlet {
             error.put("errorMsg", "用户名或密码错误");
         }
         if (error.isEmpty()) {
+            request.getSession().setAttribute("admin", admins);
             json.put("status", true);
         } else {
             json.put("status", false);
