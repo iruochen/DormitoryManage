@@ -37,6 +37,7 @@ public class ManageServlet extends HttpServlet {
     private void update() throws ServletException, IOException {
         String id = request.getParameter("id");
         User user = service.getUserById(Integer.parseInt(id));
+        String user_sex = user.getUser_sex();
         request.setAttribute("user", user);
         request.getRequestDispatcher("dormitory_manage_jsp/update.jsp").forward(request, response);
     }

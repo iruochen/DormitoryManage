@@ -79,7 +79,7 @@
                         <td>${user.telephone}</td>
                         <td>${user.address}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/UserServlet?method=update&id=${user.id}"
+                            <a href="${pageContext.request.contextPath}/Manage?method=update&id=${user.id}"
                                type="button"
                                class="btn btn-info">修改</a>
                             <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#delModal"

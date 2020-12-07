@@ -93,10 +93,17 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">性别</label>
             <div class="col-sm-8">
-                    <%--                <input type="text" class="form-control" name="user_sex" placeholder="请输入性别">--%>
                 <select class="form-control" name="user_sex">
-                    <option>男</option>
-                    <option>女</option>
+                    <c:choose>
+                        <c:when test="${user.user_sex eq '男'}">
+                            <option selected>男</option>
+                            <option>女</option>
+                        </c:when>
+                        <c:otherwise>
+                            <option>男</option>
+                            <option selected>女</option>
+                        </c:otherwise>
+                    </c:choose>
                 </select>
             </div>
         </div>
