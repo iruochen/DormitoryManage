@@ -55,11 +55,14 @@ public class RegisterServlet extends HttpServlet {
         if (!admin_pwd.equals(confirm_pwd)) {
             error.put("confirmError", "两次输入密码不一致");
         } else {
-            if (!service.register(admin) || (admin_name == null || admin_name.length() <= 0)) {
-                error.put("existError", "用户名已存在或为空");
+            if (admin_name == null || admin_name.length() <= 0) {
+                error.put("existError", "用户不能为空");
+            } else if (service.isExistByAdminName(admin_name)) {
+                error.put("existError", "用户名已存在");
             }
         }
         if (error.isEmpty()) {
+            service.register(admin);
             json.put("status", true);
         } else {
             json.put("status", false);

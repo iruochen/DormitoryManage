@@ -138,7 +138,7 @@ public class UserDao {
     public boolean isExistByUserId(String userId) {
         conn = JDBC_Utilts.getConnection();
         String sql = "select * from user where user_id = " + userId;
-        ResultSet resultSet;
+        ResultSet resultSet = null;
         try {
             state = conn.createStatement();
             resultSet = state.executeQuery(sql);
@@ -147,6 +147,8 @@ public class UserDao {
             }
         } catch (SQLException throwables) {
             return false;
+        } finally {
+            JDBC_Utilts.close(resultSet, state, conn);
         }
         return false;
     }
@@ -159,7 +161,7 @@ public class UserDao {
     public boolean isExistByBedNumber(int bedNumber) {
         conn = JDBC_Utilts.getConnection();
         String sql = "select * from user where bed_number = " + bedNumber;
-        ResultSet resultSet;
+        ResultSet resultSet = null;
         try {
             state = conn.createStatement();
             resultSet = state.executeQuery(sql);
@@ -168,6 +170,8 @@ public class UserDao {
             }
         } catch (SQLException throwables) {
             return false;
+        }  finally {
+            JDBC_Utilts.close(resultSet, state, conn);
         }
         return false;
     }

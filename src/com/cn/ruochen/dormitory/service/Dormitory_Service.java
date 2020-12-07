@@ -8,6 +8,8 @@ import java.util.List;
 public interface Dormitory_Service {
     boolean register(Admin admin);
 
+    boolean isExistByAdminName(String adminName);
+
     Admin login(Admin admin);
 
     boolean addUser(User user);

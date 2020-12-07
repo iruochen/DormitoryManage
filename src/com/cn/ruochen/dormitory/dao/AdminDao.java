@@ -77,7 +77,7 @@ public class AdminDao {
     }
 
 
-    /*k*
+    /**
      * 注册管理员
      *
      * @param admin Admin对象
@@ -98,6 +98,30 @@ public class AdminDao {
             return false;
         } finally {
             JDBC_Utilts.close(prepState, conn);
+        }
+        return false;
+    }
+
+
+    /**
+     * 判断用户名是否已经存在
+     * @param adminName
+     * @return 已存在：true  未存在：false
+     */
+    public boolean isExistByAdminName(String adminName) {
+        conn = JDBC_Utilts.getConnection();
+        String sql = "select * from admin where admin_name = ?" + adminName;
+        ResultSet resultSet = null;
+        try {
+            state = conn.createStatement();
+            resultSet = state.executeQuery(sql);
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (SQLException throwables) {
+            return false;
+        } finally {
+            JDBC_Utilts.close(resultSet, state, conn);
         }
         return false;
     }

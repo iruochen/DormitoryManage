@@ -22,6 +22,11 @@ public class Dormitory_ServiceImp implements Dormitory_Service {
     }
 
     @Override
+    public boolean isExistByAdminName(String adminName) {
+        return adminDao.isExistByAdminName(adminName);
+    }
+
+    @Override
     public Admin login(Admin admin) {
         return adminDao.login(admin);
     }

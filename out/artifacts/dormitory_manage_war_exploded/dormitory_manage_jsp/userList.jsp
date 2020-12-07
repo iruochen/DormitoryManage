@@ -14,8 +14,8 @@
 <repid:override name="css">
     <style>
         .table-responsive {
-            padding-left: 16px;
-            padding-right: 16px;
+            padding-left: 30px;
+            padding-right: 30px;
             padding-top: 30px;
         }
     </style>
@@ -55,7 +55,7 @@
         <div class="table-responsive">
             <table class="table table-striped">
                 <tr>
-                    <td>#</td>
+                    <td>id</td>
                     <td>床号</td>
                     <td>学号</td>
                     <td>姓名</td>
