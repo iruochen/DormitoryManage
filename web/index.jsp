@@ -10,12 +10,12 @@
     String path = request.getContextPath();
 %>
 <html>
-    <head>
+    <indexhead>
         <title>$Title$</title>
         <script type="text/javascript">
             window.location.href="<%=path%>/dormitory_manage_jsp/index.jsp";
         </script>
-    </head>
+    </indexhead>
     <body>
     </body>
 </html>
