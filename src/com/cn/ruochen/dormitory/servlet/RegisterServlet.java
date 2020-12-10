@@ -47,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
         Admin admin = new Admin();
         admin.setAdmin_name(admin_name);
         admin.setAdmin_pwd(admin_pwd);
-        // 能否插入成功
+        // 判断密码是否为空
         if (admin_pwd == null || admin_pwd.length() <= 0) {
             error.put("pwdNullError", "密码不能为空");
         }

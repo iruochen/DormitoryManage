@@ -11,11 +11,13 @@ public class LoginFilter implements Filter {
     // 静态集合
     private static List<String> urls = new ArrayList<>();
 
-    // 无需登录可访问
+    // 白名单
     static {
         urls.add("/index.jsp");
         urls.add("/login.jsp");
         urls.add("/register.jsp");
+        urls.add("/Register");
+        urls.add("/Login");
         urls.add("/css");
         urls.add("/js");
         urls.add("/img");
@@ -33,8 +35,10 @@ public class LoginFilter implements Filter {
 
         // 得到当前页面所在目录下全名称
         String urlPattern = req.getServletPath();
-        // 得到页面所在服务器的绝对路径
+        System.out.println(urlPattern);
+        // 获取用户请求的 URI
         String path = req.getRequestURI();
+        System.out.println(path);
         for (String url : urls) {
             if (url.equals(urlPattern) || path.contains(url)) {
                 filterChain.doFilter(servletRequest, servletResponse);

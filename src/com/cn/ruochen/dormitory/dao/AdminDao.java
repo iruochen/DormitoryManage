@@ -110,11 +110,12 @@ public class AdminDao {
      */
     public boolean isExistByAdminName(String adminName) {
         conn = JDBC_Utilts.getConnection();
-        String sql = "select * from admin where admin_name = ?" + adminName;
+        String sql = "select * from admin where admin_name = ?";
         ResultSet resultSet = null;
         try {
-            state = conn.createStatement();
-            resultSet = state.executeQuery(sql);
+            prepState = conn.prepareStatement(sql);
+            prepState.setString(1, adminName);
+            resultSet = prepState.executeQuery();
             if (resultSet.next()) {
                 return true;
             }

@@ -5,9 +5,10 @@ import java.sql.*;
 public class JDBC_Utilts {
 
     private static String driver = "com.mysql.jdbc.Driver";
-    private static String url = "jdbc:mysql://222.219.141.251:3306/dormitory_manage";
+//    private static String url = "jdbc:mysql://222.219.141.251:3306/dormitory_manage";
+    private static String url = "jdbc:mysql:///dormitory_manage";
     private static String username = "root";
-    private static String password = "ruochen666";
+    private static String password = "root";
 
 
     static {

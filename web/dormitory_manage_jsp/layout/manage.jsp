@@ -54,8 +54,8 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="<%=path%>/Manage?method=userList">查询</a></li>
-                        <li><a href="<%=path%>/Manage?method=add">添加</a></li>
+                        <li><a href="<%=path%>/Manage?method=userList"><i class="fa fa-search" aria-hidden="true"></i> 查询</a></li>
+                        <li><a href="<%=path%>/Manage?method=add"><i class="fa fa-plus" aria-hidden="true"></i> 添加</a></li>
 <%--                        <li><a href="<%=path%>/Manage?method=update">修改</a></li>--%>
 <%--                        <li><a href="<%=path%>/Manage?method=delete">删除</a></li>--%>
                     </ul>
