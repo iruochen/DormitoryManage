@@ -16,7 +16,7 @@
         .table-responsive {
             padding-left: 30px;
             padding-right: 30px;
-            padding-top: 30px;
+            padding-top: 10px;
         }
     </style>
 </repid:override>
@@ -50,46 +50,60 @@
 </repid:override>
 
 <repid:override name="content">
-    <form action="#" method="post">
-        <!-- 自适应滚动条 -->
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <tr>
-                    <td>id</td>
-                    <td>床号</td>
-                    <td>学号</td>
-                    <td>姓名</td>
-                    <td>性别</td>
-                    <td>年龄</td>
-                    <td>联系方式</td>
-                    <td>地址</td>
-                    <td>操作</td>
-                </tr>
-                <c:forEach items="${userList}" var="user">
-                    <tr>
-                        <td style="display: none">
-                            <input type="hidden" value="${user.id}">
-                        </td>
-                        <td>${user.id}</td>
-                        <td>${user.bed_number}</td>
-                        <td>${user.user_id}</td>
-                        <td>${user.user_name}</td>
-                        <td>${user.user_sex}</td>
-                        <td>${user.user_age}</td>
-                        <td>${user.telephone}</td>
-                        <td>${user.address}</td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/Manage?method=update&id=${user.id}"
-                               type="button"
-                               class="btn btn-info">修改</a>
-                            <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#delModal"
-                               href="javascript:void(0)" onclick="showDeleteModal(this)">删除</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </table>
+    <form action="${pageContext.request.contextPath}/UserServlet" method="get">
+        <input type="hidden" name="method" value="getUserByName">
+        <div class="row" style="padding-top: 10px; padding-left: 30px">
+            <div class="col-lg-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="name" placeholder="Search for name">
+                    <span class="input-group-btn">
+                        <button id="btnSearch" class="btn btn-default" type="submit"><i class="fa fa-search"
+                                                                                        style="font-size: large"
+                                                                                        aria-hidden="true"></i></button>
+                    </span>
+                </div>
+            </div>
         </div>
     </form>
+    <!-- 自适应滚动条 -->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <td>id</td>
+                <td>床号</td>
+                <td>学号</td>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>年龄</td>
+                <td>联系方式</td>
+                <td>地址</td>
+                <td>操作</td>
+            </tr>
+            <c:forEach items="${userList}" var="user">
+                <tr>
+                    <td style="display: none">
+                        <input type="hidden" value="${user.id}">
+                    </td>
+                    <td>${user.id}</td>
+                    <td>${user.bed_number}</td>
+                    <td>${user.user_id}</td>
+                    <td>${user.user_name}</td>
+                    <td>${user.user_sex}</td>
+                    <td>${user.user_age}</td>
+                    <td>${user.telephone}</td>
+                    <td>${user.address}</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/Manage?method=update&id=${user.id}"
+                           type="button"
+                           class="btn btn-info" style="margin-top: -4px;"><i class="fa fa-edit"></i></a>
+                        <a type="button" class="btn btn-danger" style="margin-top: -4px;" data-toggle="modal"
+                           data-target="#delModal"
+                           href="javascript:void(0)" onclick="showDeleteModal(this)"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 
 
     <div class="modal fade" id="delModal" tabindex="-1" role="dialog">

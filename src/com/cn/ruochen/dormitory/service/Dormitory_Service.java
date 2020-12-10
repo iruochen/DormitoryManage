@@ -25,4 +25,6 @@ public interface Dormitory_Service {
     boolean updateUser(User user);
 
     boolean deleteUser(int id);
+
+    List<User> getUserByName(String name);
 }

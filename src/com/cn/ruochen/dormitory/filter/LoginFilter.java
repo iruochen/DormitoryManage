@@ -35,10 +35,8 @@ public class LoginFilter implements Filter {
 
         // 得到当前页面所在目录下全名称
         String urlPattern = req.getServletPath();
-        System.out.println(urlPattern);
         // 获取用户请求的 URI
         String path = req.getRequestURI();
-        System.out.println(path);
         for (String url : urls) {
             if (url.equals(urlPattern) || path.contains(url)) {
                 filterChain.doFilter(servletRequest, servletResponse);

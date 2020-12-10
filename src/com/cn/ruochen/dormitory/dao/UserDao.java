@@ -1,5 +1,6 @@
 package com.cn.ruochen.dormitory.dao;
 
+import cn.org.rapid_framework.ibatis3.plugin.OffsetLimitInterceptor;
 import com.cn.ruochen.dormitory.javaBean.pojo.User;
 import com.cn.ruochen.dormitory.utilts.JDBC_Utilts;
 
@@ -90,6 +91,7 @@ public class UserDao {
 
     /**
      * id 查询
+     *
      * @param id id值
      * @return User用户
      */
@@ -130,8 +132,54 @@ public class UserDao {
         return user;
     }
 
+
+    /**
+     * 模糊查询
+     * @param name 用户姓名
+     * @return 用户列表
+     */
+    public List<User> getUserByName(String name) {
+        List<User> list = new ArrayList<>();
+        conn = JDBC_Utilts.getConnection();
+        String sql = "select * from user where user_name like ?";
+        ResultSet resultSet = null;
+        try {
+            prepState = conn.prepareStatement(sql);
+            prepState.setString(1, "%" + name + "%");
+            resultSet = prepState.executeQuery();
+            while (resultSet.next()) {
+                int id1 = resultSet.getInt("id");
+                int bed_number = resultSet.getInt("bed_number");
+                String user_id = resultSet.getString("user_id");
+                String user_name = resultSet.getString("user_name");
+                String user_sex = resultSet.getString("user_sex");
+                int user_age = resultSet.getInt("user_age");
+                String telephone = resultSet.getString("telephone");
+                String address = resultSet.getString("address");
+
+                User user = new User();
+                user.setId(id1);
+                user.setBed_number(bed_number);
+                user.setUser_id(user_id);
+                user.setUser_name(user_name);
+                user.setUser_sex(user_sex);
+                user.setUser_age(user_age);
+                user.setTelephone(telephone);
+                user.setAddress(address);
+                list.add(user);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            JDBC_Utilts.close(resultSet, prepState, conn);
+        }
+        return list;
+    }
+
+
     /**
      * 根据UserId 判断用户是否已经存在
+     *
      * @param userId 学号
      * @return 已存在：true  不存在：false
      */
@@ -155,6 +203,7 @@ public class UserDao {
 
     /**
      * 根据BedNumber 判断用户是否已经存在
+     *
      * @param bedNumber 床号
      * @return 已存在：true  不存在：false
      */
@@ -170,7 +219,7 @@ public class UserDao {
             }
         } catch (SQLException throwables) {
             return false;
-        }  finally {
+        } finally {
             JDBC_Utilts.close(resultSet, state, conn);
         }
         return false;
@@ -178,6 +227,7 @@ public class UserDao {
 
     /**
      * 更新数据
+     *
      * @param user User 对象
      * @return 更新成功：true  更新失败：false
      */
@@ -209,6 +259,7 @@ public class UserDao {
 
     /**
      * 删除数据
+     *
      * @param id id值
      * @return 删除成功：true  删除失败：false
      */

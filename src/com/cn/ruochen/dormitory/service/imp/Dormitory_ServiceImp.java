@@ -65,4 +65,9 @@ public class Dormitory_ServiceImp implements Dormitory_Service {
     public boolean deleteUser(int id) {
         return userDao.deleteUser(id);
     }
+
+    @Override
+    public List<User> getUserByName(String name) {
+       return userDao.getUserByName(name);
+    }
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -41,6 +42,16 @@ public class UserServlet extends HttpServlet {
         if (method.equals("delete")) {
             this.delete();
         }
+        if (method.equals("getUserByName")) {
+            this.getUserByName();
+        }
+    }
+
+    private void getUserByName() throws ServletException, IOException {
+        String name = request.getParameter("name");
+        List<User> userList = service.getUserByName(name);
+        request.setAttribute("userList", userList);
+        request.getRequestDispatcher("dormitory_manage_jsp/userList.jsp").forward(request, response);
     }
 
     private void delete() throws IOException {
